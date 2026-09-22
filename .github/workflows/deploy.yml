@@ -25,6 +25,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # GitHub Pages 对不存在的路径会返回 404.html，复制 index.html 作为 SPA 兜底，
+      # 这样刷新 /lesson/:id 等深层路由不会 404
+      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
