@@ -20,7 +20,7 @@ function Loading() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Derek-Callan-business-english">
       <AppProvider>
         <Suspense fallback={<Loading />}>
           <Routes>
