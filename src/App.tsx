@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { AppProvider } from './contexts/AppContext'
 import Layout from './components/Layout'
 
@@ -18,6 +18,16 @@ function Loading() {
   )
 }
 
+function NotFound() {
+  return (
+    <div className="flex flex-col items-center justify-center py-20 gap-4">
+      <h1 className="text-4xl font-bold text-gray-800">404</h1>
+      <p className="text-gray-600">页面不存在</p>
+      <Link to="/" className="text-blue-600 hover:underline">返回首页</Link>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter basename="/Derek-Callan-business-english">
@@ -31,6 +41,7 @@ export default function App() {
               <Route path="/quiz/result" element={<QuizResult />} />
               <Route path="/review" element={<Review />} />
               <Route path="/progress" element={<Progress />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </Suspense>
